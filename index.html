@@ -287,11 +287,13 @@
     width:100%;text-align:left;font:inherit;color:inherit;aspect-ratio:16 / 9;display:flex;
     align-items:center;justify-content:center;
   }
-  .demo-thumb img{
+  .demo-thumb img,
+  .demo-thumb video{
     width:100%;height:100%;object-fit:contain;object-position:center;
-    display:block;opacity:1;
+    display:block;opacity:1;pointer-events:none;background:#0A151D;
   }
   .demo-thumb.zoomable::after{content:"Expand"}
+  .demo-thumb[data-video-play].zoomable::after{content:"Play"}
   .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:.45;transition:opacity .2s ease}
   .demo-thumb.zoomable:hover .play{opacity:.15}
   .play span{width:52px;height:52px;border-radius:50%;background:rgba(62,214,196,.16);border:1px solid var(--teal);display:flex;align-items:center;justify-content:center}
@@ -749,7 +751,9 @@
           data-video-src="assets/vid/recorded_scenarios_video.mp4"
           data-caption="Recorded field scenarios — recording &amp; prep"
           aria-label="Play recorded field scenarios video">
-          <img src="assets/img/stage2_sync_diagram.png" alt="Recorded field scenarios — recording and prep" loading="lazy">
+          <video muted autoplay loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/vid/recorded_scenarios_video.mp4" type="video/mp4">
+          </video>
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
         <div class="demo-info">
@@ -763,7 +767,9 @@
           data-video-src="assets/vid/video_5fps_perfect.mp4"
           data-caption="Perfect sync at 5 fps — annotation tool"
           aria-label="Play perfect sync at 5 fps video">
-          <img src="assets/img/stage3_annotation_context.png" alt="Perfect sync at 5 fps — annotation tool" loading="lazy">
+          <video muted autoplay loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/vid/video_5fps_perfect.mp4" type="video/mp4">
+          </video>
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
         <div class="demo-info">
