@@ -222,36 +222,50 @@
   .stage-text li{margin-bottom:6px}
   .output-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--teal-dim);background:rgba(31,107,98,.08);border:1px solid rgba(31,107,98,.2);padding:6px 12px;border-radius:8px}
   .stage-link{
-    display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin-top:16px;
-    padding:12px 16px;border-radius:12px;text-decoration:none;
-    color:var(--ink);background:#fff;
-    border:1px solid var(--line);
+    display:flex;width:fit-content;max-width:100%;align-items:center;gap:14px;margin-top:16px;
+    padding:14px 18px;border-radius:12px;text-decoration:none;
+    color:var(--stage-ink, var(--ink));
+    background:var(--stage-bg, #fff);
+    border:1px solid var(--stage-border, var(--line));
+    border-left:4px solid var(--stage-accent, var(--teal-dim));
     box-shadow:0 6px 18px rgba(14,21,27,.06);
     transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   }
   .stage-link:hover{
     transform:translateY(-2px);
-    border-color:rgba(27,95,87,.35);
-    box-shadow:0 10px 24px rgba(14,21,27,.1);
+    box-shadow:0 12px 28px rgba(14,21,27,.1);
+    border-color:var(--stage-accent, var(--teal-dim));
   }
+  .stage-link--hw{--stage-accent:#C56A2E;--stage-bg:#FFF8F3;--stage-border:#E8D2C2;--stage-ink:#5C3A1E;--stage-chip:#3D2A1C}
+  .stage-link--vod{--stage-accent:#1F8A5B;--stage-bg:#F3FAF6;--stage-border:#C5E0D2;--stage-ink:#154B34;--stage-chip:#16382A}
+  .stage-link--ann{--stage-accent:#2F6F95;--stage-bg:#F3F8FB;--stage-border:#C5D8E5;--stage-ink:#1A455E;--stage-chip:#1A3344}
+  .stage-link--dash{--stage-accent:#A8891F;--stage-bg:#FFFBF0;--stage-border:#E6D9A8;--stage-ink:#5C4A12;--stage-chip:#3D3414}
   .stage-link-icon{
-    width:36px;height:36px;border-radius:10px;flex-shrink:0;
+    width:40px;height:40px;border-radius:10px;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
-    background:var(--bg-scope);color:#EAF4F2;
-    border:1px solid rgba(255,255,255,.1);
+    background:var(--stage-chip, var(--bg-scope));color:#F4F8FA;
+    border:1px solid rgba(255,255,255,.12);
   }
-  .stage-link-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .stage-link-body{display:flex;flex-direction:column;gap:4px;min-width:0}
   .stage-link-label{
-    font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ink-faint);
+    font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--stage-accent, var(--teal-dim));
   }
   .stage-link-url{
-    font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:-0.01em;
-    color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(52vw,420px);
+    font-family:var(--body);font-size:15.5px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;
+    color:var(--stage-ink, var(--ink));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(56vw,460px);
   }
   .stage-link-arrow{
-    margin-left:4px;font-family:var(--mono);font-size:14px;color:var(--teal-dim);flex-shrink:0;
+    margin-left:2px;font-family:var(--mono);font-size:16px;font-weight:500;
+    color:var(--stage-accent, var(--teal-dim));flex-shrink:0;
   }
+  .brand-mark svg.brand-logo{height:40px;width:auto;display:block}
+  .footer-logo-wrap{
+    height:36px;width:auto;display:inline-flex;align-items:center;justify-content:center;
+    border-radius:6px;background:linear-gradient(135deg,#0b1a30,#0a1424);padding:3px 6px;
+    border:1px solid rgba(0,229,255,.22);line-height:0;
+  }
+  .footer-logo-wrap svg{height:30px;width:auto;display:block}
   @media (max-width:760px){
     .timeline::before{left:20px}
     .stage-num{width:44px;height:44px;font-size:12px}
@@ -436,7 +450,61 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark"><img src="assets/img/logo_mark.svg" alt="" class="brand-logo" width="84" height="40"></span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="brand-logo" viewBox="0 0 210 100" xmlns="http://www.w3.org/2000/svg" width="84" height="40">
+          <line x1="66" y1="56" x2="144" y2="56" stroke="#2f6bff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="66" y1="56" x2="144" y2="56" stroke="#00e5ff" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="60" cy="56" r="30" fill="none" stroke="#2f6bff" stroke-width="4.6"/>
+          <circle cx="60" cy="56" r="26.4" fill="none" stroke="#00e5ff" stroke-width="1.1" opacity="0.55"/>
+          <g>
+            <line x1="69" y1="56" x2="84.6" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="66.36" y1="62.36" x2="77.4" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="60" y1="65" x2="60" y2="80.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="53.64" y1="62.36" x2="42.6" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="51" y1="56" x2="35.4" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="53.64" y1="49.64" x2="42.6" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="60" y1="47" x2="60" y2="31.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="66.36" y1="49.64" x2="77.4" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <circle cx="60" cy="56" r="24.6" fill="none" stroke="#00e5ff" stroke-width="0.9" opacity="0.30"/>
+            <circle cx="82.6" cy="56" r="2.1" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 60 56" to="360 60 56" dur="3.2s" repeatCount="indefinite"/>
+          </g>
+          <path d="M 32 20 L 40 20 M 32 20 L 32 28" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 88 20 L 80 20 M 88 20 L 88 28" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 88 92 L 80 92 M 88 92 L 88 84" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 32 92 L 40 92 M 32 92 L 32 84" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <circle cx="60" cy="56" r="10.5" fill="#0a1b33" stroke="#00e5ff" stroke-width="2"/>
+          <circle cx="60" cy="56" r="6.2" fill="none" stroke="#2f6bff" stroke-width="2"/>
+          <circle cx="60" cy="56" r="2.6" fill="#8becff"/>
+          <circle cx="57" cy="53" r="1.1" fill="#ffffff" opacity="0.85"/>
+          <circle cx="150" cy="56" r="30" fill="none" stroke="#2f6bff" stroke-width="4.6"/>
+          <circle cx="150" cy="56" r="26.4" fill="none" stroke="#00e5ff" stroke-width="1.1" opacity="0.55"/>
+          <g>
+            <line x1="159" y1="56" x2="174.6" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="156.36" y1="62.36" x2="167.4" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="150" y1="65" x2="150" y2="80.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="143.64" y1="62.36" x2="132.6" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="141" y1="56" x2="125.4" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="143.64" y1="49.64" x2="132.6" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="150" y1="47" x2="150" y2="31.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="156.36" y1="49.64" x2="167.4" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <circle cx="150" cy="56" r="24.6" fill="none" stroke="#00e5ff" stroke-width="0.9" opacity="0.30"/>
+            <circle cx="172.6" cy="56" r="2.1" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 150 56" to="360 150 56" dur="3.2s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="150" cy="56" r="4.6" fill="#0a1b33" stroke="#00e5ff" stroke-width="1.8"/>
+          <path d="M 154.9 44 A 13 13 0 0 1 162.1 53.3" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <path d="M 157.5 37.5 A 20 20 0 0 1 169.6 51.8" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <path d="M 160.1 31 A 27 27 0 0 1 177.1 50.4" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <g>
+            <line x1="150" y1="56" x2="170.7" y2="38.6" stroke="#8becff" stroke-width="2"/>
+            <circle cx="170.7" cy="38.6" r="2.2" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" values="-22 150 56; 8 150 56; -22 150 56" dur="3.52s" repeatCount="indefinite"/>
+          </g>
+          <path d="M 169 68 L 183 68 L 183 77 Q 183 84 176 87 Q 169 84 169 77 Z" fill="#ffab00" stroke="#0a1b33" stroke-width="1"/>
+          <path d="M 172.8 76 L 175.2 78.6 L 179.6 73" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
       <span class="brand-text"><strong>Two-Wheeler <span class="brand-safety">Safety</span></strong><span>Hazard Fusion</span></span>
     </a>
     <ul class="nav-links">
@@ -538,7 +606,7 @@
               <li>Portable power bank, onboard SSD, and a <code>jetsonhotspot</code> Wi-Fi access point</li>
             </ul>
             <span class="output-tag">OUTPUT → timestamped RGB frames + raw radar recordings</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">
+            <a class="stage-link stage-link--hw" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">
               <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
               <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 01</span><span class="stage-link-url">RoadSafetyOnTwoWheelers</span></span>
               <span class="stage-link-arrow" aria-hidden="true">↗</span>
@@ -562,7 +630,7 @@
               <li>1-, 3-, or 5-scan temporal bundles with explicit scan ages</li>
             </ul>
             <span class="output-tag">OUTPUT → calibrated, annotation-ready camera–radar samples</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer">
+            <a class="stage-link stage-link--vod" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer">
               <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
               <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 02</span><span class="stage-link-url">FusionApp / vod_conversion</span></span>
               <span class="stage-link-arrow" aria-hidden="true">↗</span>
@@ -586,9 +654,9 @@
               <li>Export to internal JSON, KITTI/VoD <code>label_2</code>, and JSON/CSV</li>
             </ul>
             <span class="output-tag">OUTPUT → auditable 3D object labels with temporal identities</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer">
+            <a class="stage-link stage-link--ann" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer">
               <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
-              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 03</span><span class="stage-link-url">two-wheeler-radar-camera-annotation-tool</span></span>
+              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 03</span><span class="stage-link-url">radar-camera-annotation-tool</span></span>
               <span class="stage-link-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -610,7 +678,7 @@
               <li>Object table, risk timeline, and event log for full auditability</li>
             </ul>
             <span class="output-tag">OUTPUT → explainable, time-aware hazard warnings</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer">
+            <a class="stage-link stage-link--dash" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer">
               <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
               <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 04</span><span class="stage-link-url">twowheeler-safety-dashboard</span></span>
               <span class="stage-link-arrow" aria-hidden="true">↗</span>
@@ -730,7 +798,61 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="assets/img/logo_mark.svg" alt="Two-Wheeler Safety" class="footer-logo" width="76" height="36" loading="lazy">
+      <span class="footer-logo-wrap" aria-hidden="true">
+        <svg viewBox="0 0 210 100" xmlns="http://www.w3.org/2000/svg" width="63" height="30">
+          <line x1="66" y1="56" x2="144" y2="56" stroke="#2f6bff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="66" y1="56" x2="144" y2="56" stroke="#00e5ff" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="60" cy="56" r="30" fill="none" stroke="#2f6bff" stroke-width="4.6"/>
+          <circle cx="60" cy="56" r="26.4" fill="none" stroke="#00e5ff" stroke-width="1.1" opacity="0.55"/>
+          <g>
+            <line x1="69" y1="56" x2="84.6" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="66.36" y1="62.36" x2="77.4" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="60" y1="65" x2="60" y2="80.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="53.64" y1="62.36" x2="42.6" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="51" y1="56" x2="35.4" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="53.64" y1="49.64" x2="42.6" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="60" y1="47" x2="60" y2="31.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="66.36" y1="49.64" x2="77.4" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <circle cx="60" cy="56" r="24.6" fill="none" stroke="#00e5ff" stroke-width="0.9" opacity="0.30"/>
+            <circle cx="82.6" cy="56" r="2.1" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 60 56" to="360 60 56" dur="3.2s" repeatCount="indefinite"/>
+          </g>
+          <path d="M 32 20 L 40 20 M 32 20 L 32 28" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 88 20 L 80 20 M 88 20 L 88 28" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 88 92 L 80 92 M 88 92 L 88 84" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 32 92 L 40 92 M 32 92 L 32 84" fill="none" stroke="#8becff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <circle cx="60" cy="56" r="10.5" fill="#0a1b33" stroke="#00e5ff" stroke-width="2"/>
+          <circle cx="60" cy="56" r="6.2" fill="none" stroke="#2f6bff" stroke-width="2"/>
+          <circle cx="60" cy="56" r="2.6" fill="#8becff"/>
+          <circle cx="57" cy="53" r="1.1" fill="#ffffff" opacity="0.85"/>
+          <circle cx="150" cy="56" r="30" fill="none" stroke="#2f6bff" stroke-width="4.6"/>
+          <circle cx="150" cy="56" r="26.4" fill="none" stroke="#00e5ff" stroke-width="1.1" opacity="0.55"/>
+          <g>
+            <line x1="159" y1="56" x2="174.6" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="156.36" y1="62.36" x2="167.4" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="150" y1="65" x2="150" y2="80.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="143.64" y1="62.36" x2="132.6" y2="73.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="141" y1="56" x2="125.4" y2="56" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="143.64" y1="49.64" x2="132.6" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="150" y1="47" x2="150" y2="31.4" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <line x1="156.36" y1="49.64" x2="167.4" y2="38.6" stroke="#00e5ff" stroke-width="1.7" opacity="0.75"/>
+            <circle cx="150" cy="56" r="24.6" fill="none" stroke="#00e5ff" stroke-width="0.9" opacity="0.30"/>
+            <circle cx="172.6" cy="56" r="2.1" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 150 56" to="360 150 56" dur="3.2s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="150" cy="56" r="4.6" fill="#0a1b33" stroke="#00e5ff" stroke-width="1.8"/>
+          <path d="M 154.9 44 A 13 13 0 0 1 162.1 53.3" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <path d="M 157.5 37.5 A 20 20 0 0 1 169.6 51.8" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <path d="M 160.1 31 A 27 27 0 0 1 177.1 50.4" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-dasharray="3 3" opacity="0.85"/>
+          <g>
+            <line x1="150" y1="56" x2="170.7" y2="38.6" stroke="#8becff" stroke-width="2"/>
+            <circle cx="170.7" cy="38.6" r="2.2" fill="#8becff"/>
+            <animateTransform attributeName="transform" type="rotate" values="-22 150 56; 8 150 56; -22 150 56" dur="3.52s" repeatCount="indefinite"/>
+          </g>
+          <path d="M 169 68 L 183 68 L 183 77 Q 183 84 176 87 Q 169 84 169 77 Z" fill="#ffab00" stroke="#0a1b33" stroke-width="1"/>
+          <path d="M 172.8 76 L 175.2 78.6 L 179.6 73" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
       <p>© 2026 University of Canberra · Vision and Sensing Lab</p>
     </div>
     <p>LICENSE: TBD</p>
