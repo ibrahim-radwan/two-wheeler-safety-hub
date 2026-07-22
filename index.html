@@ -69,6 +69,7 @@
   .brand-logo{height:40px;width:auto;display:block}
   .brand-text{display:flex;flex-direction:column;gap:1px;line-height:1.15;min-width:0}
   .brand-text strong{font-weight:600;letter-spacing:.04em;font-size:13px;color:#EAF4F2}
+  .brand-text strong .brand-safety{color:#00e5ff}
   .brand-text span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FA3B0}
   nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0}
   nav a.nav-link{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:#B9C6C4;text-decoration:none}
@@ -217,15 +218,41 @@
   .stage-text li{margin-bottom:6px}
   .output-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--teal-dim);background:rgba(31,107,98,.08);border:1px solid rgba(31,107,98,.2);padding:6px 12px;border-radius:8px}
   .stage-link{
-    display:flex;width:fit-content;align-items:center;gap:6px;margin-top:14px;
-    font-family:var(--mono);font-size:12.5px;color:var(--teal-dim);text-decoration:none;
-    letter-spacing:.02em;
+    display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin-top:16px;
+    padding:12px 16px;border-radius:12px;text-decoration:none;
+    color:#04211D;background:linear-gradient(135deg,#3ED6C4 0%,#2BB8A8 100%);
+    border:1px solid rgba(27,95,87,.25);
+    box-shadow:0 8px 22px rgba(31,107,98,.18);
+    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
   }
-  .stage-link:hover{text-decoration:underline;text-underline-offset:2px}
+  .stage-link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(31,107,98,.28);
+    filter:brightness(1.03);
+  }
+  .stage-link-icon{
+    width:36px;height:36px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(4,33,29,.12);color:#04211D;
+  }
+  .stage-link-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .stage-link-label{
+    font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(4,33,29,.72);
+  }
+  .stage-link-url{
+    font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:-0.01em;
+    color:#04211D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(52vw,420px);
+  }
+  .stage-link-arrow{
+    margin-left:4px;font-family:var(--mono);font-size:14px;color:rgba(4,33,29,.75);flex-shrink:0;
+  }
   @media (max-width:760px){
     .timeline::before{left:20px}
     .stage-num{width:44px;height:44px;font-size:12px}
     .stage-body{padding-left:60px;gap:14px}
+    .stage-link{width:100%;box-sizing:border-box}
+    .stage-link-url{max-width:none;white-space:normal}
   }
 
   /* ---------- DEMOS (dark) ---------- */
@@ -258,14 +285,51 @@
   @media (max-width:760px){ .demo-grid{grid-template-columns:1fr} }
 
   /* ---------- REPOS ---------- */
-  .repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .repo-card{border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;background:#fff;transition:border-color .15s ease}
-  .repo-card:hover{border-color:var(--teal-dim)}
-  .repo-card .repo-name{font-family:var(--mono);font-size:14px;color:var(--ink);display:flex;align-items:center;gap:12px}
-  .repo-icon{width:36px;height:36px;border-radius:9px;background:var(--teal-tint);color:var(--teal-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .repo-card p{color:var(--ink-muted);font-size:15px;line-height:1.5;margin:10px 0 14px}
-  .repo-card a.go{font-family:var(--mono);font-size:12.5px;color:var(--teal-dim);text-decoration:none}
-  .repo-card a.go:hover{text-decoration:underline}
+  .repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .repo-card{
+    position:relative;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 24px 22px;background:#fff;
+    box-shadow:0 10px 28px rgba(14,21,27,.06);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    overflow:hidden;
+  }
+  .repo-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:var(--repo-accent, var(--teal));
+  }
+  .repo-card:hover{
+    transform:translateY(-3px);
+    border-color:color-mix(in srgb, var(--repo-accent, var(--teal)) 45%, var(--line));
+    box-shadow:0 16px 36px rgba(14,21,27,.1);
+  }
+  .repo-card--hw{--repo-accent:#E07A3D;--repo-tint:rgba(224,122,61,.12);--repo-ink:#8A4A1F}
+  .repo-card--vod{--repo-accent:#2FAE7A;--repo-tint:rgba(47,174,122,.12);--repo-ink:#1B6B48}
+  .repo-card--ann{--repo-accent:#3A7CA5;--repo-tint:rgba(58,124,165,.12);--repo-ink:#1F4E6B}
+  .repo-card--dash{--repo-accent:#C4A035;--repo-tint:rgba(196,160,53,.14);--repo-ink:#6E5A12}
+  .repo-card .repo-name{
+    font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);
+    display:flex;align-items:center;gap:12px;
+  }
+  .repo-icon{
+    width:40px;height:40px;border-radius:11px;flex-shrink:0;
+    background:var(--repo-tint, var(--teal-tint));color:var(--repo-ink, var(--teal-dim));
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid color-mix(in srgb, var(--repo-accent, var(--teal)) 28%, transparent);
+  }
+  .repo-card p{color:var(--ink-muted);font-size:15px;line-height:1.5;margin:12px 0 16px}
+  .repo-card a.go{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;text-decoration:none;
+    color:var(--repo-ink, var(--teal-dim));
+    background:var(--repo-tint, var(--teal-tint));
+    border:1px solid color-mix(in srgb, var(--repo-accent, var(--teal)) 30%, transparent);
+    padding:9px 14px;border-radius:9px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .repo-card a.go:hover{
+    background:color-mix(in srgb, var(--repo-accent, var(--teal)) 22%, #fff);
+    transform:translateY(-1px);
+  }
   @media (max-width:760px){ .repo-grid{grid-template-columns:1fr} }
 
   /* ---------- REPORT / CITE ---------- */
@@ -363,8 +427,8 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark"><img src="assets/img/brand-logo.gif" alt="" class="brand-logo" width="84" height="40"></span>
-      <span class="brand-text"><strong>Two-Wheeler Safety</strong><span>Hazard Fusion</span></span>
+      <span class="brand-mark"><img src="assets/img/logo_icon.gif" alt="" class="brand-logo" width="42" height="40"></span>
+      <span class="brand-text"><strong>Two-Wheeler <span class="brand-safety">Safety</span></strong><span>Hazard Fusion</span></span>
     </a>
     <ul class="nav-links">
       <li><a class="nav-link" href="#pipeline">PIPELINE</a></li>
@@ -465,7 +529,11 @@
               <li>Portable power bank, onboard SSD, and a <code>jetsonhotspot</code> Wi-Fi access point</li>
             </ul>
             <span class="output-tag">OUTPUT → timestamped RGB frames + raw radar recordings</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers →</a>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">
+              <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 01</span><span class="stage-link-url">RoadSafetyOnTwoWheelers</span></span>
+              <span class="stage-link-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -485,7 +553,11 @@
               <li>1-, 3-, or 5-scan temporal bundles with explicit scan ages</li>
             </ul>
             <span class="output-tag">OUTPUT → calibrated, annotation-ready camera–radar samples</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer">github.com/…/FusionApp/vod_conversion →</a>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer">
+              <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 02</span><span class="stage-link-url">FusionApp / vod_conversion</span></span>
+              <span class="stage-link-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -505,7 +577,11 @@
               <li>Export to internal JSON, KITTI/VoD <code>label_2</code>, and JSON/CSV</li>
             </ul>
             <span class="output-tag">OUTPUT → auditable 3D object labels with temporal identities</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool →</a>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer">
+              <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 03</span><span class="stage-link-url">two-wheeler-radar-camera-annotation-tool</span></span>
+              <span class="stage-link-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -525,7 +601,11 @@
               <li>Object table, risk timeline, and event log for full auditability</li>
             </ul>
             <span class="output-tag">OUTPUT → explainable, time-aware hazard warnings</span>
-            <a class="stage-link" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/twowheeler-safety-dashboard →</a>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer">
+              <span class="stage-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+              <span class="stage-link-body"><span class="stage-link-label">GitHub · Stage 04</span><span class="stage-link-url">twowheeler-safety-dashboard</span></span>
+              <span class="stage-link-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -586,25 +666,25 @@
       <p>Source code for each stage of the sensing-to-safety pipeline.</p>
     </div>
     <div class="repo-grid">
-      <div class="repo-card">
+      <div class="repo-card repo-card--hw">
         <div class="repo-name"><span class="repo-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>fusionapp-hardware</div>
         <p>Onboard acquisition system: camera/radar drivers, Jetson pipeline, local web server.</p>
-        <a class="go" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers">github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers →</a>
+        <a class="go" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Open repository ↗</a>
       </div>
-      <div class="repo-card">
+      <div class="repo-card repo-card--vod">
         <div class="repo-name"><span class="repo-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>vod-sync-pipeline</div>
         <p>Radar–camera synchronization, calibration, and VoD-compatible dataset export.</p>
-        <a class="go" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion">github.com/…/FusionApp/vod_conversion →</a>
+        <a class="go" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Open repository ↗</a>
       </div>
-      <div class="repo-card">
+      <div class="repo-card repo-card--ann">
         <div class="repo-name"><span class="repo-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>radar-camera-annotator</div>
         <p>3D annotation tool with BEV/RGB dual view, detection assist, and tracking.</p>
-        <a class="go" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool">github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool →</a>
+        <a class="go" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Open repository ↗</a>
       </div>
-      <div class="repo-card">
+      <div class="repo-card repo-card--dash">
         <div class="repo-name"><span class="repo-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>safety-dashboard</div>
         <p>Fused risk dashboard: TTC, brake demand, and rider-facing alerts.</p>
-        <a class="go" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main">github.com/ibrahim-radwan/twowheeler-safety-dashboard →</a>
+        <a class="go" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Open repository ↗</a>
       </div>
     </div>
   </div>
@@ -616,7 +696,7 @@
       <div class="eyebrow">FULL REPORT</div>
       <h2 style="margin-top:12px;font-size:26px">Read the integration report</h2>
       <p style="color:var(--ink-muted);margin-top:14px">Hardware integration, synchronization mathematics, annotation tool architecture, and dashboard risk logic — written up in full.</p>
-      <a class="btn btn-ghost-dark" style="margin-top:10px" href="./Report.pdf">Open Report.pdf ↗</a>
+      <a class="btn btn-ghost-dark" style="margin-top:10px" href="./Report.pdf" target="_blank" rel="noopener noreferrer">Open Report.pdf ↗</a>
     </div>
     <div>
       <div class="eyebrow" style="margin-bottom:10px">TEAM</div>
@@ -624,11 +704,16 @@
       <p style="color:var(--ink-muted);font-size:14px;margin:0 0 18px">Developed as part of the <a href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" style="color:var(--teal-dim);text-decoration:underline">RoadSafetyOnTwoWheelers</a> project.</p>
       <ul class="team-list">
         <li><span class="t-name">Ibrahim Radwan</span><span class="t-role">Project Lead</span></li>
-        <li><span class="t-name">[Team member name]</span><span class="t-role">[Role]</span></li>
-        <li><span class="t-name">[Team member name]</span><span class="t-role">[Role]</span></li>
-        <li><span class="t-name">[Team member name]</span><span class="t-role">[Role]</span></li>
+        <li><span class="t-name">Wael Issa</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Mohammad Abu Alsheikh</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Dinh Thai Hoang</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Javad Amiri</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Carlos C. N. Kuhn</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Weijian Deng</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Mohammed Hassanin</span><span class="t-role">Team member</span></li>
+        <li><span class="t-name">Damith Herath</span><span class="t-role">Team member</span></li>
       </ul>
-      <a class="btn btn-ghost-dark" style="margin-top:16px" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers">View team &amp; contributors ↗</a>
+      <a class="btn btn-ghost-dark" style="margin-top:16px" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">View team &amp; contributors ↗</a>
     </div>
   </div>
 </section>
@@ -636,7 +721,7 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="assets/img/brand-logo.gif" alt="Two-Wheeler Safety" class="footer-logo" width="76" height="36" loading="lazy">
+      <img src="assets/img/logo_icon.gif" alt="Two-Wheeler Safety" class="footer-logo" width="42" height="40" loading="lazy">
       <p>© 2026 University of Canberra · Vision and Sensing Lab</p>
     </div>
     <p>LICENSE: TBD</p>
