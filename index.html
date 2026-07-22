@@ -435,10 +435,23 @@
     border-radius:12px;overflow:hidden;background:#0A151D;
     box-shadow:0 24px 80px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.1);
   }
-  .lightbox-figure img{
+  .lightbox-figure img,
+  .lightbox-figure video{
     display:block;max-width:100%;max-height:calc(90vh - 48px);width:auto;height:auto;
     margin:0 auto;object-fit:contain;
   }
+  .lightbox-figure video{
+    width:min(1100px,94vw);max-height:calc(90vh - 56px);background:#000;
+  }
+  .lightbox.is-video .lightbox-nav,
+  .lightbox.is-video .lightbox-counter{display:none}
+  .lightbox-open-tab{
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--teal);
+    text-decoration:none;border:1px solid rgba(62,214,196,.35);padding:8px 14px;border-radius:8px;
+    background:rgba(62,214,196,.08);
+  }
+  .lightbox-open-tab:hover{text-decoration:underline;background:rgba(62,214,196,.14)}
+  .lightbox-actions{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
   .lightbox-caption{
     font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:#C6D6D2;
     text-align:center;max-width:80ch;margin:0;
@@ -723,38 +736,48 @@
       <p>Short clips of each stage in action, on the real hardware and interfaces.</p>
     </div>
 
-    <div class="note">
-      <b>Setup note —</b> the thumbnails below link to placeholder video IDs. To go live: drag your <code>.mp4</code> clips into any GitHub issue or PR comment box, copy the auto-generated <code>github.com/user-attachments/assets/…</code> link GitHub gives you, and paste it into each <code>href</code> below. Remove this note once your real clips are linked.
-    </div>
-
     <div class="demo-grid">
       <article class="demo-card">
         <button type="button" class="demo-thumb zoomable" data-lightbox data-caption="Boot, connect, and record — hardware platform">
           <img src="assets/img/scooter_photo.png" alt="Boot, connect, and record — hardware platform" loading="lazy">
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
-        <div class="demo-info"><h3>Boot, connect, and record</h3><p>Hardware platform · 01</p><a class="watch" href="https://github.com/user-attachments/assets/REPLACE-WITH-YOUR-VIDEO-ID">WATCH DEMO ↗</a></div>
+        <div class="demo-info"><h3>Boot, connect, and record</h3><p>Hardware platform · 01</p><a class="watch" href="#demos">WATCH DEMO ↗</a></div>
       </article>
       <article class="demo-card">
-        <button type="button" class="demo-thumb zoomable" data-lightbox data-caption="Live synchronized capture — recording &amp; prep">
-          <img src="assets/img/stage2_sync_diagram.png" alt="Live synchronized capture — recording and prep" loading="lazy">
+        <button type="button" class="demo-thumb zoomable" data-video-play
+          data-video-src="assets/vid/recorded_scenarios_video.mp4"
+          data-caption="Recorded field scenarios — recording &amp; prep"
+          aria-label="Play recorded field scenarios video">
+          <img src="assets/img/stage2_sync_diagram.png" alt="Recorded field scenarios — recording and prep" loading="lazy">
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
-        <div class="demo-info"><h3>Live synchronized capture</h3><p>Recording &amp; prep · 02</p><a class="watch" href="https://github.com/user-attachments/assets/REPLACE-WITH-YOUR-VIDEO-ID">WATCH DEMO ↗</a></div>
+        <div class="demo-info">
+          <h3>Recorded field scenarios</h3>
+          <p>Recording &amp; prep · 02</p>
+          <a class="watch" href="assets/vid/recorded_scenarios_video.mp4" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+        </div>
       </article>
       <article class="demo-card">
-        <button type="button" class="demo-thumb zoomable" data-lightbox data-caption="Labelling walkthrough — annotation tool">
-          <img src="assets/img/stage3_annotation_context.png" alt="Labelling walkthrough — annotation tool" loading="lazy">
+        <button type="button" class="demo-thumb zoomable" data-video-play
+          data-video-src="assets/vid/video_5fps_perfect.mp4"
+          data-caption="Perfect sync at 5 fps — annotation tool"
+          aria-label="Play perfect sync at 5 fps video">
+          <img src="assets/img/stage3_annotation_context.png" alt="Perfect sync at 5 fps — annotation tool" loading="lazy">
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
-        <div class="demo-info"><h3>Labelling walkthrough</h3><p>Annotation tool · 03</p><a class="watch" href="https://github.com/user-attachments/assets/REPLACE-WITH-YOUR-VIDEO-ID">WATCH DEMO ↗</a></div>
+        <div class="demo-info">
+          <h3>Perfect sync at 5 fps</h3>
+          <p>Annotation tool · 03</p>
+          <a class="watch" href="assets/vid/video_5fps_perfect.mp4" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+        </div>
       </article>
       <article class="demo-card">
         <button type="button" class="demo-thumb zoomable" data-lightbox data-caption="Live risk warning — safety dashboard">
           <img src="assets/img/stage4_dashboard_loop.png" alt="Live risk warning — safety dashboard" loading="lazy">
           <div class="play" aria-hidden="true"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="#3ED6C4"><path d="M8 5v14l11-7z"/></svg></span></div>
         </button>
-        <div class="demo-info"><h3>Live risk warning</h3><p>Safety dashboard · 04</p><a class="watch" href="https://github.com/user-attachments/assets/REPLACE-WITH-YOUR-VIDEO-ID">WATCH DEMO ↗</a></div>
+        <div class="demo-info"><h3>Live risk warning</h3><p>Safety dashboard · 04</p><a class="watch" href="#demos">WATCH DEMO ↗</a></div>
       </article>
     </div>
   </div>
@@ -897,8 +920,12 @@
   <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
     <figure class="lightbox-figure" id="lightboxFigure">
       <img id="lightboxImage" src="" alt="">
+      <video id="lightboxVideo" controls playsinline preload="metadata" hidden></video>
     </figure>
-    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <div class="lightbox-actions">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <a class="lightbox-open-tab" id="lightboxOpenTab" href="#" target="_blank" rel="noopener noreferrer" hidden>Open in new tab ↗</a>
+    </div>
   </div>
 </div>
 
@@ -925,11 +952,14 @@
 
     var lightbox = document.getElementById('lightbox');
     var lightboxImage = document.getElementById('lightboxImage');
+    var lightboxVideo = document.getElementById('lightboxVideo');
     var lightboxCaption = document.getElementById('lightboxCaption');
     var lightboxCounter = document.getElementById('lightboxCounter');
+    var lightboxOpenTab = document.getElementById('lightboxOpenTab');
     var items = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
     var index = 0;
     var lastFocus = null;
+    var mode = 'image';
 
     function getItemData(el){
       var img = el.tagName === 'IMG' ? el : el.querySelector('img');
@@ -940,12 +970,26 @@
       };
     }
 
+    function stopVideo(){
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute('src');
+      lightboxVideo.load();
+      lightboxVideo.hidden = true;
+      lightboxOpenTab.hidden = true;
+      lightboxOpenTab.removeAttribute('href');
+      lightbox.classList.remove('is-video');
+    }
+
     function render(){
       var data = getItemData(items[index]);
+      stopVideo();
+      mode = 'image';
+      lightboxImage.hidden = false;
       lightboxImage.src = data.src;
       lightboxImage.alt = data.alt;
       lightboxCaption.textContent = data.caption;
       lightboxCounter.textContent = (index + 1) + ' / ' + items.length;
+      lightboxCounter.hidden = false;
     }
 
     function openAt(i){
@@ -960,16 +1004,43 @@
       document.getElementById('lightboxClose').focus();
     }
 
+    function openVideo(src, caption){
+      lastFocus = document.activeElement;
+      mode = 'video';
+      lightboxImage.hidden = true;
+      lightboxImage.removeAttribute('src');
+      lightboxVideo.hidden = false;
+      lightboxVideo.src = src;
+      lightboxVideo.load();
+      lightboxCaption.textContent = caption || '';
+      lightboxCounter.hidden = true;
+      lightboxOpenTab.hidden = false;
+      lightboxOpenTab.href = src;
+      lightbox.classList.add('is-video');
+      lightbox.hidden = false;
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightbox.classList.add('open');
+      document.body.classList.add('lightbox-open');
+      document.getElementById('lightboxClose').focus();
+      var playPromise = lightboxVideo.play();
+      if(playPromise && playPromise.catch) playPromise.catch(function(){});
+    }
+
     function closeLightbox(){
       lightbox.classList.remove('open');
       lightbox.hidden = true;
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lightbox-open');
+      stopVideo();
+      lightboxImage.hidden = false;
       lightboxImage.removeAttribute('src');
+      lightboxCounter.hidden = false;
+      mode = 'image';
       if(lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
     function step(delta){
+      if(mode !== 'image') return;
       index = (index + delta + items.length) % items.length;
       render();
     }
@@ -983,6 +1054,19 @@
         if(e.key === 'Enter' || e.key === ' '){
           e.preventDefault();
           openAt(i);
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-video-play]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        openVideo(el.getAttribute('data-video-src'), el.getAttribute('data-caption') || '');
+      });
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openVideo(el.getAttribute('data-video-src'), el.getAttribute('data-caption') || '');
         }
       });
     });
