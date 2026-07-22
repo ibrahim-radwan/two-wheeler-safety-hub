@@ -351,16 +351,41 @@
   }
   @media (max-width:760px){ .repo-grid{grid-template-columns:1fr} }
 
-  /* ---------- REPORT / CITE ---------- */
+  /* ---------- TEAM / PROJECT ---------- */
   .report{background:var(--paper-2)}
-  .report-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-  pre{background:var(--ink);color:#D7E4E0;font-family:var(--mono);font-size:12.5px;line-height:1.7;padding:20px 22px;border-radius:10px;overflow-x:auto;margin:0}
-  .team-list{list-style:none;margin:0;padding:0}
-  .team-list li{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
-  .team-list li:first-child{border-top:1px solid var(--line)}
-  .t-name{font-family:var(--body);font-size:14.5px;font-weight:500;color:var(--ink)}
-  .t-role{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
-  @media (max-width:820px){ .report-grid{grid-template-columns:1fr} }
+  .report-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+  .report-copy h2{
+    font-family:var(--display);font-size:clamp(24px,3vw,30px);font-weight:600;
+    letter-spacing:-0.02em;margin:12px 0 0;color:var(--ink);line-height:1.2;
+  }
+  .report-copy p{
+    color:var(--ink-muted);font-family:var(--body);font-size:16px;line-height:1.55;
+    margin:14px 0 0;max-width:42ch;
+  }
+  .team-block h3{
+    font-family:var(--display);font-size:clamp(22px,2.8vw,28px);font-weight:600;
+    letter-spacing:-0.02em;margin:0 0 10px;color:var(--ink);
+  }
+  .team-block > p{
+    color:var(--ink-muted);font-family:var(--body);font-size:15.5px;line-height:1.55;
+    margin:0 0 22px;
+  }
+  .team-list{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 20px;
+  }
+  .team-list li{
+    display:block;padding:10px 0;border-bottom:1px solid var(--line);
+  }
+  .t-name{font-family:var(--body);font-size:15.5px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;display:block}
+  .t-role{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);letter-spacing:.04em;display:block;margin-top:3px}
+  @media (max-width:820px){
+    .report-grid{grid-template-columns:1fr}
+    .team-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:520px){
+    .team-list{grid-template-columns:1fr}
+  }
 
   footer{padding:40px 0;border-top:1px solid var(--line)}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
@@ -511,7 +536,7 @@
       <li><a class="nav-link" href="#pipeline">PIPELINE</a></li>
       <li><a class="nav-link" href="#demos">DEMOS</a></li>
       <li><a class="nav-link" href="#repos">REPOS</a></li>
-      <li><a class="nav-link" href="#report">REPORT</a></li>
+      <li><a class="nav-link" href="#team">TEAM</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
   </div>
@@ -520,7 +545,7 @@
       <a href="#pipeline">PIPELINE</a>
       <a href="#demos">DEMOS</a>
       <a href="#repos">REPOS</a>
-      <a href="#report">REPORT</a>
+      <a href="#team">TEAM</a>
     </div>
   </div>
 </nav>
@@ -569,7 +594,7 @@
       <div class="eyebrow">ABOUT</div>
       <h2>No crumple zone, no airbag, half a second to react</h2>
       <p>Two-wheeled vehicles put riders in traffic with almost no reaction time and no physical protection. This project mounts a forward-facing RGB camera and a mmWave radar on a scooter, processes both streams entirely onboard, and turns the fused evidence into an interpretable, rider-facing risk warning — with no dependence on external compute or network infrastructure.</p>
-      <p>The system is split into four components, each in its own repository and each detailed in the full integration report below.</p>
+      <p>The system is split into four components, each in its own repository and linked from the pipeline and repos sections below.</p>
     </div>
     <div class="about-media">
       <figure class="zoomable" data-lightbox data-caption="Integrated camera-radar safety pipeline overview" tabindex="0" role="button" aria-label="Expand pipeline overview image">
@@ -767,18 +792,18 @@
   </div>
 </section>
 
-<section id="report" class="report">
+<section id="team" class="report">
   <div class="wrap report-grid">
-    <div>
-      <div class="eyebrow">FULL REPORT</div>
-      <h2 style="margin-top:12px;font-size:26px">Read the integration report</h2>
-      <p style="color:var(--ink-muted);margin-top:14px">Hardware integration, synchronization mathematics, annotation tool architecture, and dashboard risk logic — written up in full.</p>
-      <a class="btn btn-ghost-dark" style="margin-top:10px" href="./Report.pdf" target="_blank" rel="noopener noreferrer">Open Report.pdf ↗</a>
+    <div class="report-copy">
+      <div class="eyebrow">OPEN SOURCE</div>
+      <h2>Explore FusionApp and related repos</h2>
+      <p>Start from the main RoadSafetyOnTwoWheelers project for onboard sensing and recording, then follow the pipeline through VoD conversion, the annotation tool, and the safety dashboard.</p>
+      <a class="btn btn-ghost-dark" style="margin-top:18px" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">Open main project ↗</a>
     </div>
-    <div>
+    <div class="team-block">
       <div class="eyebrow" style="margin-bottom:10px">TEAM</div>
-      <h3 style="font-family:var(--display);font-size:19px;font-weight:600;margin:0 0 8px">Behind the project</h3>
-      <p style="color:var(--ink-muted);font-size:14px;margin:0 0 18px">Developed as part of the <a href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" style="color:var(--teal-dim);text-decoration:underline">RoadSafetyOnTwoWheelers</a> project.</p>
+      <h3>Behind the project</h3>
+      <p>University of Canberra · Vision and Sensing Lab, as part of <a href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">RoadSafetyOnTwoWheelers</a>.</p>
       <ul class="team-list">
         <li><span class="t-name">Ibrahim Radwan</span><span class="t-role">Project Lead</span></li>
         <li><span class="t-name">Wael Issa</span><span class="t-role">Team member</span></li>
@@ -790,7 +815,6 @@
         <li><span class="t-name">Mohammed Hassanin</span><span class="t-role">Team member</span></li>
         <li><span class="t-name">Damith Herath</span><span class="t-role">Team member</span></li>
       </ul>
-      <a class="btn btn-ghost-dark" style="margin-top:16px" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">View team &amp; contributors ↗</a>
     </div>
   </div>
 </section>
