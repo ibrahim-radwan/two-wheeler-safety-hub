@@ -65,7 +65,11 @@
   nav{position:sticky;top:0;z-index:50;background:rgba(11,22,32,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
   .brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:13px;color:#EAF4F2;text-decoration:none;min-width:0}
-  .brand-mark{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;padding:4px 6px;line-height:0;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+  .brand-mark{
+    flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#0b1a30,#0a1424);border-radius:8px;padding:4px 8px;line-height:0;
+    border:1px solid rgba(0,229,255,.22);box-shadow:0 0 12px rgba(0,229,255,.22);
+  }
   .brand-logo{height:40px;width:auto;display:block}
   .brand-text{display:flex;flex-direction:column;gap:1px;line-height:1.15;min-width:0}
   .brand-text strong{font-weight:600;letter-spacing:.04em;font-size:13px;color:#EAF4F2}
@@ -220,32 +224,33 @@
   .stage-link{
     display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin-top:16px;
     padding:12px 16px;border-radius:12px;text-decoration:none;
-    color:#04211D;background:linear-gradient(135deg,#3ED6C4 0%,#2BB8A8 100%);
-    border:1px solid rgba(27,95,87,.25);
-    box-shadow:0 8px 22px rgba(31,107,98,.18);
-    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    color:var(--ink);background:#fff;
+    border:1px solid var(--line);
+    box-shadow:0 6px 18px rgba(14,21,27,.06);
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   }
   .stage-link:hover{
     transform:translateY(-2px);
-    box-shadow:0 12px 28px rgba(31,107,98,.28);
-    filter:brightness(1.03);
+    border-color:rgba(27,95,87,.35);
+    box-shadow:0 10px 24px rgba(14,21,27,.1);
   }
   .stage-link-icon{
     width:36px;height:36px;border-radius:10px;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
-    background:rgba(4,33,29,.12);color:#04211D;
+    background:var(--bg-scope);color:#EAF4F2;
+    border:1px solid rgba(255,255,255,.1);
   }
   .stage-link-body{display:flex;flex-direction:column;gap:2px;min-width:0}
   .stage-link-label{
     font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-    color:rgba(4,33,29,.72);
+    color:var(--ink-faint);
   }
   .stage-link-url{
     font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:-0.01em;
-    color:#04211D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(52vw,420px);
+    color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(52vw,420px);
   }
   .stage-link-arrow{
-    margin-left:4px;font-family:var(--mono);font-size:14px;color:rgba(4,33,29,.75);flex-shrink:0;
+    margin-left:4px;font-family:var(--mono);font-size:14px;color:var(--teal-dim);flex-shrink:0;
   }
   @media (max-width:760px){
     .timeline::before{left:20px}
@@ -346,7 +351,11 @@
   footer{padding:40px 0;border-top:1px solid var(--line)}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .footer-brand{display:flex;align-items:center;gap:12px}
-  .footer-logo{height:36px;width:auto;display:block;border-radius:6px;background:#fff;padding:3px 4px;border:1px solid var(--line)}
+  .footer-logo{
+    height:36px;width:auto;display:block;border-radius:6px;
+    background:linear-gradient(135deg,#0b1a30,#0a1424);padding:3px 6px;
+    border:1px solid rgba(0,229,255,.22);
+  }
   footer p{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:0}
 
   /* ---------- IMAGE ZOOM / LIGHTBOX ---------- */
@@ -427,7 +436,7 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark"><img src="assets/img/logo_icon.gif" alt="" class="brand-logo" width="42" height="40"></span>
+      <span class="brand-mark"><img src="assets/img/logo_mark.svg" alt="" class="brand-logo" width="84" height="40"></span>
       <span class="brand-text"><strong>Two-Wheeler <span class="brand-safety">Safety</span></strong><span>Hazard Fusion</span></span>
     </a>
     <ul class="nav-links">
@@ -721,7 +730,7 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="assets/img/logo_icon.gif" alt="Two-Wheeler Safety" class="footer-logo" width="42" height="40" loading="lazy">
+      <img src="assets/img/logo_mark.svg" alt="Two-Wheeler Safety" class="footer-logo" width="76" height="36" loading="lazy">
       <p>© 2026 University of Canberra · Vision and Sensing Lab</p>
     </div>
     <p>LICENSE: TBD</p>
