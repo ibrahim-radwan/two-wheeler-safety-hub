@@ -7,7 +7,7 @@
 <meta name="description" content="Camera-radar sensing, synchronized recording, 3D annotation, and risk analysis, integrated end to end on an electric scooter.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" type="image/png" href="assets/img/logo_icon.png">
+<link rel="icon" type="image/gif" href="assets/img/logo_icon.gif">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -216,6 +216,12 @@
   .stage-text ul{margin:0 0 12px;padding-left:18px;color:var(--ink-muted);font-size:15px;line-height:1.5}
   .stage-text li{margin-bottom:6px}
   .output-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--teal-dim);background:rgba(31,107,98,.08);border:1px solid rgba(31,107,98,.2);padding:6px 12px;border-radius:8px}
+  .stage-link{
+    display:flex;width:fit-content;align-items:center;gap:6px;margin-top:14px;
+    font-family:var(--mono);font-size:12.5px;color:var(--teal-dim);text-decoration:none;
+    letter-spacing:.02em;
+  }
+  .stage-link:hover{text-decoration:underline;text-underline-offset:2px}
   @media (max-width:760px){
     .timeline::before{left:20px}
     .stage-num{width:44px;height:44px;font-size:12px}
@@ -357,7 +363,7 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark"><img src="assets/img/logo_icon.png" alt="" class="brand-logo" width="73" height="40"></span>
+      <span class="brand-mark"><img src="assets/img/brand-logo.gif" alt="" class="brand-logo" width="84" height="40"></span>
       <span class="brand-text"><strong>Two-Wheeler Safety</strong><span>Hazard Fusion</span></span>
     </a>
     <ul class="nav-links">
@@ -459,6 +465,7 @@
               <li>Portable power bank, onboard SSD, and a <code>jetsonhotspot</code> Wi-Fi access point</li>
             </ul>
             <span class="output-tag">OUTPUT → timestamped RGB frames + raw radar recordings</span>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers →</a>
           </div>
         </div>
       </div>
@@ -478,6 +485,7 @@
               <li>1-, 3-, or 5-scan temporal bundles with explicit scan ages</li>
             </ul>
             <span class="output-tag">OUTPUT → calibrated, annotation-ready camera–radar samples</span>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/RoadSafetyOnTwoWheelers/tree/main/FusionApp/vod_conversion" target="_blank" rel="noopener noreferrer">github.com/…/FusionApp/vod_conversion →</a>
           </div>
         </div>
       </div>
@@ -497,6 +505,7 @@
               <li>Export to internal JSON, KITTI/VoD <code>label_2</code>, and JSON/CSV</li>
             </ul>
             <span class="output-tag">OUTPUT → auditable 3D object labels with temporal identities</span>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/two-wheeler-radar-camera-annotation-tool →</a>
           </div>
         </div>
       </div>
@@ -516,6 +525,7 @@
               <li>Object table, risk timeline, and event log for full auditability</li>
             </ul>
             <span class="output-tag">OUTPUT → explainable, time-aware hazard warnings</span>
+            <a class="stage-link" href="https://github.com/ibrahim-radwan/twowheeler-safety-dashboard/tree/main" target="_blank" rel="noopener noreferrer">github.com/ibrahim-radwan/twowheeler-safety-dashboard →</a>
           </div>
         </div>
       </div>
@@ -626,7 +636,7 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="assets/img/logo_icon.png" alt="Two-Wheeler Safety" class="footer-logo" width="59" height="32" loading="lazy">
+      <img src="assets/img/brand-logo.gif" alt="Two-Wheeler Safety" class="footer-logo" width="76" height="36" loading="lazy">
       <p>© 2026 University of Canberra · Vision and Sensing Lab</p>
     </div>
     <p>LICENSE: TBD</p>
